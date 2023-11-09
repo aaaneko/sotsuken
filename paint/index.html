@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <title>Full Screen Paint Canvas</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid #000;
+      z-index: 1; /* Canvasをアイコンよりも前に表示 */
+    }
+
+    .bi-icon {
+      position: absolute;
+      z-index: 2; /* アイコンを最前面に表示 */
+    }
+
+    i.bi.bi-pen, i.bi.bi-eraser-fill, i.bi.bi-arrow-return-left {
+      font-size: 36px;
+      color: blue;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<canvas id="paintCanvas"></canvas>
+<div class="bi-icon">
+  <i class="bi bi-pen" id="penIcon"></i>
+  <i class="bi bi-eraser-fill" id="eraserIcon"></i>
+  <i class="bi bi-arrow-return-left" id="returnIcon"></i>
+</div>
+<script>
+  const canvas = document.getElementById("paintCanvas");
+  const ctx = canvas.getContext("2d");
+  let painting = false;
+  let erasing = false;
+
+  const eraserIcon = document.getElementById("eraserIcon");
+  eraserIcon.addEventListener("click", () => {
+    erasing = !erasing;
+    if (erasing) {
+      eraserIcon.style.color = "red";
+    } else {
+      eraserIcon.style.color = "blue";
+    }
+  });
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  canvas.addEventListener("mousedown", (e) => {
+    if (erasing) {
+      erasing = true;
+      clearAt(e.clientX, e.clientY);
+    } else {
+      painting = true;
+      ctx.beginPath();
+      ctx.moveTo(e.clientX, e.clientY);
+    }
+  });
+
+  canvas.addEventListener("mouseup", () => {
+    painting = false;
+  });
+
+  canvas.addEventListener("mousemove", draw);
+
+  function draw(e) {
+    if (!painting) return;
+    if (erasing) {
+      clearAt(e.clientX, e.clientY);
+    } else {
+      ctx.lineTo(e.clientX, e.clientY);
+      ctx.stroke();
+    }
+  }
+
+  function clearAt(x, y) {
+    const radius = 10; // 消去する範囲の半径
+    ctx.clearRect(x - radius, y - radius, radius * 2, radius * 2);
+  }
+</script>
+</body>
+</html>

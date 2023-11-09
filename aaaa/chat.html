@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Chat</title>
+    <link type="text/css" rel="stylesheet" href="chat.css"/>
+</head>
+<body>
+<input type="hidden" id="toNameInput" value="{{ chat_info.toNameInput }}">
+<input type="hidden" id="toInput" placeholder="To" value="{{ chat_info.toInput }}">
+<input type="hidden" id="idInput" value="{{ chat_info.idInput }}">
+<label>読み上げ機能<input type="checkbox" id="mode"></label>
+話者選択:<select id="speakerSelect"></select>
+<!-- チャットの外側部分① -->
+<div id="messages_container">
+    <!-- ヘッダー部分② -->
+    <div id="chat_header">
+        <div id="status_icon">●</div>
+        <div id="chat_name"></div>
+    </div>
+
+    <!-- タイムライン部分③ -->
+    <div id="chat"></div>
+
+    <!-- テキストボックス、送信ボタン④ -->
+    <div id="send_block">
+        <input type="text" id="message" placeholder="メッセージを入力">
+        <button id="sendButton" onclick="sendMessage()" disabled>送信</button>
+    </div>
+</div>
+
+<script src="{% static 'chat/chat.js' %}"></script>
+</body>
+</html>

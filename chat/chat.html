@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Sample Layout</title>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <div class="group-name">グループ名</div>
+        </div>
+        <img class="logo-image" src="../imges/user.png" alt="User Image" />
+    </div>
+    <div class="content">
+        <!-- Uncomment this section if needed -->
+        <!-- <div class="content-background"></div> -->
+        <div class="content-container">
+            <input type="text" id="chat-input" placeholder="メッセージを入力">
+            <div id="chat-messages"></div>
+        </div>
+        <img class="hikoki_image" src="../imges/hikoki.png" alt="Hikoki Image"  />
+    </div>
+    <img class="modoru_image" src="../imges/modoru.png" alt="Modoru Image" />
+    <img class="puls_image" src="../imges/puls.png" alt="Puls Image" />
+    <script>
+        // テキストボックスの要素を取得
+        var chatInput = document.getElementById('chat-input');
+
+        // メッセージ表示エリアの要素を取得
+        var chatMessages = document.getElementById('chat-messages');
+
+        // テキストボックスで Enter キーが押されたらメッセージを送信
+        chatInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                // テキストボックスからメッセージを取得
+                var message = chatInput.value;
+
+                // メッセージを表示エリアに追加
+                chatMessages.innerHTML += '<p>' + message + '</p>';
+
+                // テキストボックスをクリア
+                chatInput.value = '';
+            }
+        });
+    </script>
+</div>
+</body>
+</html>

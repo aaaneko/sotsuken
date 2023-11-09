@@ -1,0 +1,93 @@
+/* styles.css */
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+}
+
+.header {
+    width: 1182px;
+    height: 130px;
+    padding: 10px;
+    left: 142px;
+    top: 0;
+    position: absolute;
+    border: 1px black solid;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.from { /* チャット欄のスタイル */
+    width: 1244px;
+    height: 106px;
+    left: 102px;
+    top: 918px;
+    position: absolute;
+}
+
+
+.logo {
+    color: black;
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.logo-image {
+    width: 130px;
+    height: 150px;
+    left: 1210px;
+    top: 0px;
+    position: absolute;
+    border: 1px black solid;
+}
+
+.content {
+    width: 1244px;
+    height: 106px;
+    left: 102px;
+    top: 918px;
+    position: absolute;
+}
+.content-text {
+    color: black;
+    font-size: 36px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.hikoki_image {
+    width: 94px;
+    height: 106px;
+    left: 1280px;
+    top: 10px;
+    position: absolute;
+    border: 1px black solid;
+}
+
+.modoru_image {
+    width: 120px;
+    height: 120px;
+    left: 0;
+    top: 2px;
+    position: absolute;
+    border: 1px black solid;
+}
+
+.puls_image {
+    width: 102px;
+    height: 106px;
+    left: 0;
+    top: 925px;
+    position: absolute;
+    border: 1px black solid;
+}
+#chat-input{
+    width: 100px;
+
+}

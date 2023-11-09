@@ -1,0 +1,15 @@
+
+
+i.bi.bi-pen {
+    font-size: 36px;
+    color: blue;
+    cursor: pointer;
+    top: 500px;
+}
+
+i.bi.bi-arrow-return-left {
+    font-size: 36px; /* アイコンのフォントサイズを調整 */
+    color: blue;
+    cursor: pointer;
+}
+
