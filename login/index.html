@@ -3,20 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン画面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 <div class="center">
     <div class="login-container">
-        <h1>ログイン</h1>
-        <form id="login-form">
-            <label for="username">ユーザー名:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">パスワード:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">ログイン</button>
-        </form>
+        <h1>ログイン・登録</h1>
+        <div id="google-login-btn"></div>
     </div>
 </div>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+    // Google Sign-In APIの初期化
+    function initializeGoogleSignIn() {
+        gapi.load('auth2', function() {
+            gapi.auth2.init({
+                client_id: 'YOUR_CLIENT_ID', // ここに実際のクライアントIDを入力
+            });
+            renderGoogleSignInButton();
+        });
+    }
+
+    // Google Sign-In ボタンの描画
+    function renderGoogleSignInButton() {
+        gapi.signin2.render('google-login-btn', {
+            'scope': 'profile email',
+            'width': 240,
+            'height': 40,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onGoogleSignIn,
+            'onfailure': onGoogleSignInFailure
+        });
+    }
+
+    // Googleアカウントでログイン成功時の処理
+    function onGoogleSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+        // ここにログイン成功時の処理を追加
+    }
+
+    // Googleアカウントでログイン失敗時の処理
+    function onGoogleSignInFailure(error) {
+        console.error('Google Sign-In Failed:', error);
+        // ここにログイン失敗時の処理を追加
+    }
+
+    initializeGoogleSignIn();
+</script>
 </body>
 </html>
