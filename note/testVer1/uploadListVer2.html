@@ -1,0 +1,40 @@
+<!-- uploadListVer2.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/note/testVer1/style.css">
+</head>
+
+<body>
+<div class="main-container">
+  <div class="post-container" id="post-container"></div>
+
+  <button id="open-input" onclick="openInputArea()">
+    <i class="bi bi-pencil"></i>
+  </button>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="input-form" id="input-form">
+    <div class="input-formBox">
+      <input type="text" id="input-title" name="input-title" placeholder="タイトル">
+      <input type="text" id="input-link" name="input-link" placeholder="リンク">
+      <div class="button-container">
+        <button type="button" onclick="goBack()">戻る</button>
+        <button type="button" onclick="inputControl()">
+          <i class="bi bi-send-check"></i> 投稿
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="inputScript.js"></script>
+</body>
+
+</html>
