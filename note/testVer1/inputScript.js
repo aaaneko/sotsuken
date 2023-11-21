@@ -73,18 +73,19 @@ function prependPostWithTitleLink(username, title, link) {
 // 入力内容を制御する関数
 function inputControl() {
     const inputTitleElement = document.getElementById("input-title");
-    const inputLinkElement = document.getElementById("input-link");
+    const  inputLinkElement = document.getElementById("input-link");
 
-    if (!inputTitleElement || !inputLinkElement) {
-        console.error("Input elements not found.");
-        return;
-    }
 
     const title = inputTitleElement.value;
     const link = inputLinkElement.value;
 
+    if (!title.trim()&&!link.trim()) {
+        window.alert("タイトルとリンクが未入力です");
+        return;
+    }
+
     if (!title.trim()) {
-        console.error("タイトルが空です");
+        window.alert("タイトルが空です");
         return;
     }
 
