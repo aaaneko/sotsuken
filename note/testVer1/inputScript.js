@@ -73,41 +73,40 @@ function prependPostWithTitleLink(username, title, link) {
 // 入力内容を制御する関数
 function inputControl() {
     const inputTitleElement = document.getElementById("input-title");
-    const  inputLinkElement = document.getElementById("input-link");
+    const inputLinkElement = document.getElementById("input-link");
 
+    const title = inputTitleElement.value.trim();
+    const link = inputLinkElement.value.trim();
 
-    const title = inputTitleElement.value;
-    const link = inputLinkElement.value;
-
-    if (!title.trim()&&!link.trim()) {
+    if (!title && !link) {
         window.alert("タイトルとリンクが未入力です");
         return;
     }
 
-    if (!title.trim()) {
+    if (!title) {
         window.alert("タイトルが空です");
         return;
     }
 
+    if (!link) {
+        window.alert("リンクが未入力です");
+        return;
+    }
+
     if (link && !link.startsWith("https://www.notion.so/")) {
-        // Notion以外のURLが入力された場合、アラートを表示して送信を中止
         window.alert('Notion以外のURLを送信することはできません。');
         return;
     }
 
     // link が存在する場合のみ prependPostWithTitleLink を呼び出し、入力フォームをクリアして閉じる
-    if (link) {
+    if (title && link) {
         prependPostWithTitleLink("ユーザネーム", title, link);
         inputTitleElement.value = "";
         inputLinkElement.value = "";
         closeInputArea();
-    } else {
-        // link が存在しない場合に window.alert で警告文を表示
-        window.alert("リンクが入力されていません");
     }
-
-    // inputTitleElement.value = "";
 }
+
 
 // 入力フォームの表示・非表示を切り替える関数
 function toggleInputArea(displayValue) {
